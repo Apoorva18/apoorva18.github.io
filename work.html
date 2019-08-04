@@ -1,0 +1,338 @@
+
+<!--
+	Editorial by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+		<title>Generic - Editorial by HTML5 UP</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+	</head>
+	<body class="is-preload">
+
+		<!-- Wrapper -->
+			<div id="wrapper">
+
+				<!-- Main -->
+					<div id="main">
+						<div class="inner">
+
+							<!-- Header -->
+								<header id="header">
+									<a href="generic.html" class="logo"><strong>Work</strong> </a>
+									<ul class="icons">
+										
+										<li><a href="#" class="icon brands fa-facebook-f"><span class="label">Facebook</span></a></li>
+										
+										<li><a href="#" class="icon brands fa-instagram"><span class="label">Instagram</span></a></li>
+                                        <li><a href="#" class="icon brands fa-github"><span class="label">Medium</span></a></li>
+                                        <li><a href="#" class="icon brands fa-linkedin"><span class="label">Medium</span></a></li>
+									</ul>
+								</header>
+
+							<!-- Content -->
+							<section>
+                                <header class="main">
+                                    <h1>Projects</h1>
+                                </header>
+
+                                <!-- Content -->
+                                    <!--<h2 id="content">Sample Content</h2>-->
+                                    <p>I have worked on various projects on Java and Python being it from working on making a database system, working on android app which works on the principal of amazon dynamo, Performing colour quantisation of images, performing  digit recognition, Performing map reduce on a hadoop framework.</p>
+                                    <div class="row">
+                                        <div id="1">
+                                            <h3>SELECT PROJECT JOIN UNION AGGREGATE EVALUATOR</h3>
+                                            <p>This is basically a database system, it works on taking query from user, any type of query, be it join, group by, order by, LIMIT, or a combination of these.  The query evaluator breaks the query into its subparts dividing the table name, projections required , select operations to be performed and also the various operations which is <strong>JOIN, GROUP BY ,ORDER BY, LIMIT, AGGREGATE OPERATORS LIKE SUM, COUNT </strong> ETC  that is required to be performed on the data. The following project had memory restrictions.i.e data that could be fit into the memory, was performed on by in memory operations otherwise it was handled by on disk operations. It implements the various operations that need to be performed on the data, and gives back the result to the user. The various operations are implemented using JAVA and JSQLParser. Hash Join is used in order to implement JOIN operations, Group By operator can perform both in memory as well as on disk group by operations. Order By is done for in memory operations using Collections.sort() , whereas the same for on disk is done using external sort. Link to my github. </p>
+											<p>The project was implemented on TPC-H data <a href="https://relational.fit.cvut.cz/dataset/TPCH">CLICK HERE</a> for more info. </p>
+											
+											<pre><code><b>TPC-H Query 12</b>
+$> select
+lineitem.shipmode,
+sum(case
+  when orders.orderpriority = '1-URGENT'
+	or orders.orderpriority = '2-HIGH'
+  then 1
+  else 0
+end) as high_line_count,
+sum(case
+  when orders.orderpriority <> '1-URGENT'
+	and orders.orderpriority <> '2-HIGH'
+  then 1
+  else 0
+end) as low_line_count
+from
+orders,
+lineitem
+where
+orders.orderkey = lineitem.orderkey
+and lineitem.shipmode in ('MAIL', 'SHIP')
+and lineitem.commitdate < lineitem.receiptdate
+and lineitem.shipdate < lineitem.commitdate
+and lineitem.receiptdate >= '1994-01-01'
+and lineitem.receiptdate < '1995-01-01'
+group by
+lineitem.shipmode
+order by
+lineitem.shipmode;
+<b>... took 6.73 seconds</b>												
+												
+												</code></pre>
+										</div>
+                                        <div id="2" >
+                                            <h3>AMAZON DYNAMO STYLE KEY VALUE STORAGE </h3>
+                                            <p>This project was an android app that supports key value storage based on the SHA-1 hash values. </p>
+												<p>The three things needed to be implemented were :
+												</p>
+												<p><UL>
+													
+														<LI><strong>PARTITIONING:</strong> It partitions key value pairs according to the SHA-1 of the key value, and designating its appropriate place in between the nodes. </LI>
+														<LI><strong>REPLICATION:</strong> It stored key value pairs, such that it not only goes to the node it belongs to, but also to two of its successor. Thus, Quorum replication was used </LI>
+														<LI><strong>FAILURE HANDLING:</strong > Whenever a node fails, the key-value pairs go to two of its successor, failure can be determined by setting a timeout at the nodes. When the failed node becomes live again, it is the responsibility of its successors, to return the recovered nodes all its values that itmissed while it was in the failed state.</LI>
+												</UL></p>
+											<p>	It supports concurrency so that when more than one user sends a message the message are still in the right ordering. It supports replication as well as failure handing. Here each and every node is played by an android device and their port number gives their position in the key value storage system. Here Linearizability is implemented which is for different key values pairs the latest value is stored with the device. For implementing the latest values, I have stored the timestamp of the key-value pairs so that only the latest one is stored and retreived everytime. Link to my github</p>
+                                        </div>
+                                        <!-- Break -->
+                                        <div id="3">
+                                            <h3>CHORD STYLE KEY VALUE STORAGE</h3>
+                                            <p>It is a chord style distributed hash table which supports id partitioning based on the SHA-1 hash values, ring based partitioning  and node joins in between the operations. In a chord DHT ,it only knows its successor and predecessor and not the entire ring, in order to implement new node joins the new node as well as the successor and predecessor needed to be informed of the new node, and then partitioning of values took place.</p>
+										</div>
+										<div id="4" >
+												<h3>MAP REDUCE</h3>
+												<p>For this project, I needed to perform data aggregation, applying classical Map Reduce on unstructured data and visualizing the data.</p>
+												<p><UL>
+													<LI><strong>Collecting data:</strong> Data had to be collected from 3 sources, using the <strong >REST</strong> API from twitter, NYTimes API and Common Crawl data. All the data was collected on a single topic for example "SPORTS".  </LI>
+													<LI><strong>Analysing using Big Data Methods:</strong> It was needed to set up hadoop VMImage, and then analyse the data using Big Data Methods(specically using the Map Reduce algorithm)
+													<UL>
+														<LI> For exceuting Map Reduce, the first step was to clean the data, by removing stop words</LI>
+
+														<LI>second step included, stemming the words, for example Running to run. This was done in order to decreasethe amount of useful data </LI>
+														<LI> After cleaning the dataset, word count and word co-occurence was performed on the data, to find out the trends that were prevailing at that time in sports</LI>
+													</UL></LI>
+													<LI><strong>Visualizing the data:</strong> The results were visualized using Tableau, for all the three datasets.</LI></UL></p>
+												<p>The visualizations can be seen on<a href="https://public.tableau.com/profile/apoorva.biseria#!/vizhome/wordcloudsLab2DIC/CommonCrawlWordCount?publish=yes"> this site.</a></p>
+											</div>
+											<div  id="5">
+													<h3>Morphological Image Processing and Image Segmentation</h3>
+													<p><UL><strong>Morphological Image Processing</strong>
+
+														A series of dilation and erosion on images were performed using 3*3 structuring element in order to perform various operations
+														<LI><strong>Remove noise:</strong> This was series of morphological operations which are dilation, erosion, erosion and dilation. These morphological operations were done using a 3*3 structuring element
+														</LI>
+														<LI><strong>Boundary Extraction:</strong> It takes place when you take a image and subtract the eroded version of that image to get boundaries.
+															Boundary = I – Erosion(I) </LI>
+													</UL></p>
+													
+													<p><UL><strong>Image Segmentation and Point Detection</strong>
+
+														
+														<LI><strong>Point Detection:</strong>In this task we were needed to detect porosity of the turbine blade, so I used a 3*3 kernel which was used to find the difference between the mid pixel and all the other 8 pixels and using the absolute value. This masked image was then thresholded to find
+  
+																out the porosity of the turbine blade. The thresholding was found out manually by observing pixel intensies and the histogram.
+														</LI>
+														<LI><strong>Image Segmentation:</strong> 
+															 We were needed to segment the image into components. Firstly I thresholded the image by observing the pixel intensities and the performed erosion using a 3*3 kernel to get different components. </LI>
+													</UL>
+													The results can be seen <a href="Computer Vision and Image Processing.pdf">here.</a>
+												
+												
+												</p>
+												</div>
+												<div id ="6">
+														<h3>Hough Transform and Object detection</h3>
+														<p><UL><strong>Hough Transform</strong>
+	
+															When we perform hough transform of a image, it detects the geometrical shapes of the images like straight lines and circles.
+															
+															To detect straight lines, following steps were taken in the image.
+															<LI> Getting the edges of the image, using sobel operator.
+															</LI>
+															<LI>Convert the image to a binary image using thresholding .</LI>
+															<LI>Next step was creating a [theta,rho ] matrix which contained votes of the different edge points for each theta and rho. Then finding the local maxima for the theta for a given ranges of p</LI>
+														</UL>
+													Results can be seen <a href="Computer Vision and Image Processing.pdf" >here</a>.
+													</p>
+														 
+														<p><UL><strong>Object Detection</strong>
+	
+																For Object Detection, we used a cursor of various types as the template or object and then performed object detection on the images.
+																The various steps involved were:
+															<LI><strong>Applying Gaussian Blur:</strong>This was done in order to reduce noise of the image.
+															</LI>
+															<LI><strong>Laplacian transformation:</strong> Laplacian Transormation was performed on both image and templates and then resizing the template while going over through the image.
+																 </LI>
+
+																 <LI><strong>Normalized Cross Correlation</strong> Normalized Cross Correlation was performed between the image and the template,the place where NCC was minimun was designated as the object being identified.
+																 </LI>
+														</UL>
+														
+													
+													
+													</p>
+													</div>
+													<div id="7">
+															<h3>Handwriting Recognition</h3>
+															<p> This project deals with using Machine Learning algorithm that is Linear Regression, Logistic
+																	 Regression and Neural Network to identify whether the handwriting belongs to the same writer or
+																	 different writer. </p>
+																	 
+															<p><strong>DATASET:</strong> We are provided with two types of datasets Human observed dataset and GSC
+																dataset. For the human observed dataset we have 9 features for each and every writing and for
+																GSC dataset we have 512 features for every writing. For comparing two handwritings we are
+																using two methods here subtraction as well as concatenation. Subtraction implies taking the
+																absolute value of the difference of respective values and concatenation implies placing the feature
+																side by side of the respective pairs. If we use concatenation the dataset will contain 18 features
+																concatenating the features of both the handwritings, and for GSC it will have 1024 features. If we
+																use subtraction the number of features will be 9 and 512 for human observed and GSC
+																respectively.</p>		<p> The model is trained for similar as well as different writers. But, the number of
+																	 combinations of different writers’ sample is much more than that of same. So we take only that
+																	 much number of samples from different as present in same which brings us to a uniform
+																	 distribution of data. For each and every dataset we have performed linear regression, logistic
+																	 regression as well performed neural network using Keras.</p>
+														<p> The results and the performace that different methods show on the dataset can be seen <a href="proj2 .pdf">here.</a> </p>
+														</div>
+														<div id="8" >
+																<h3>Digit Recognition</h3>
+																<p> This project deals with using Machine Learning algorithm that is Logistic Regression, Random
+																		 Forest, Support Vector Machine and Neural Network to train on the MNIST dataset and tune the
+																		 hyperparameters to improve accuracy. </p>
+																		 <p><strong>DATASET:</strong> MNIST dataset consists of a 28*28 image that is it has 784
+																		 features which help us to recognize digits from 0 to 9. So, here we are dealing with a classification
+																		problem in which we have 10 classes.
+																		<p>In Logistic regression, we are doing softmax regression,
+																		 since it is a multiclass logistic regression. The test data is converted into a one hot vector which
+																		 has 10 columns in each row denoting every class. One at any position denotes that it belongs to
+																		 that particular class. In support vector machine, I am using particularly Linear SVM and SVM
+																		 with kernel ‘rbf’. A SVM model is a probabilistic model where each point is marked in a n-
+																		 dimensional space where a hyperplane divides the two categories, where n is the number of
+																		 categories. Also, deep Neural Network is implemented on the data using Keras on tensorflow.
+																		 Here Random forest is implemented on the mnist dataset, which is a popoluar ensemble method
+																		 for classification. After implementing all four methods on the mnist dataset, I made an ensemble
+																		 model that works on majority voting as voting classifier, it takes votes from all the four models
+																		 and chooses the class which has major number of votes in each class from the four models. Also,
+																	 testing is performed on the USPS dataset which is resized to a 28*28 image.</p>
+															<p> The results and the performace that different methods show on the dataset can be seen <a href="proj3.pdf">here.</a> </p>
+															</div>
+
+													<div id="9" >
+															<h3>Color quantization of images</h3>
+															<p> Color Quantization of images can be done using K-Means Clustering, and setting the value of k equal to the number of colours we want to see in the image. In K-nearest neighbours, the class of the pixel is decided by seeing its nearest mean.
+														Results can be seen <a href="#" >here</a>.
+
+
+														</p>
+														<p>Also, Gaussian Markov Model was applied on the images.  </p>
+														</div>
+
+                                        
+                                    </div>
+						</div>
+					</div>
+
+				<!-- Sidebar -->
+				<div id="sidebar">
+					<div class="inner">
+
+						<!-- Search -->
+							<section id="search" class="alt">
+								<form method="post" action="#">
+									<input type="text" name="query" id="query" placeholder="Search" />
+								</form>
+							</section>
+
+						<!-- Menu -->
+							<nav id="menu">
+								<header class="major">
+									<h2>Menu</h2>
+								</header>
+								<ul>
+									<li><a href="index.html">Homepage</a></li>
+									<li><a href="generic.html">About me</a></li>
+									<li><a href="work.html">Work</a></li>
+									<li><a href="blogs.html">Blog</a></li>
+									<!--<li>
+										<span class="opener">Submenu</span>
+										<ul>
+											<li><a href="#">Lorem Dolor</a></li>
+											<li><a href="#">Ipsum Adipiscing</a></li>
+											<li><a href="#">Tempus Magna</a></li>
+											<li><a href="#">Feugiat Veroeros</a></li>
+										</ul>
+									</li>
+									<li><a href="#">Etiam Dolore</a></li>
+									<li><a href="#">Adipiscing</a></li>
+									<li>
+										<span class="opener">Another Submenu</span>
+										<ul>
+											<li><a href="#">Lorem Dolor</a></li>
+											<li><a href="#">Ipsum Adipiscing</a></li>
+											<li><a href="#">Tempus Magna</a></li>
+											<li><a href="#">Feugiat Veroeros</a></li>
+										</ul>
+									</li>
+									<li><a href="#">Maximus Erat</a></li>
+									<li><a href="#">Sapien Mauris</a></li>
+									<li><a href="#">Amet Lacinia</a></li>
+								</ul>
+							-->
+							</nav>
+
+						<!-- Section -->
+							<section>
+								<header class="major">
+									<h2>Latest BLog</h2>
+								</header>
+								<div class="mini-posts">
+									<article>
+										<a href="#" class="image"><img src="images/pic07.jpg" alt="" /></a>
+										<p>Coming Soon</p>
+									</article>
+									<!--<article>
+										<a href="#" class="image"><img src="images/pic08.jpg" alt="" /></a>
+										<p>Aenean ornare velit lacus, ac varius enim lorem ullamcorper dolore aliquam.</p>
+									</article>
+									<article>
+										<a href="#" class="image"><img src="images/pic09.jpg" alt="" /></a>
+										<p>Aenean ornare velit lacus, ac varius enim lorem ullamcorper dolore aliquam.</p>
+									</article> -->
+								</div> 
+								<ul class="actions">
+									<li><a href="#" class="button">More</a></li>
+								</ul>
+							</section>
+
+						<!-- Section -->
+							<section>
+								<header class="major">
+									<h2>Contact me</h2>
+								</header>
+								<p>To hire me or to know more about my work</p>
+								<ul class="contact">
+									<!--<li class="icon solid fa-envelope"><a href="#">information@untitled.tld</a></li>-->
+									<li class="icon solid fa-phone">(716) 548 9641</li>
+									<!--<li class="icon solid fa-home">1234 Somewhere Road #8254<br />
+									Nashville, TN 00000-0000</li>-->
+								</ul>
+							</section>
+
+							<!-- Footer -->
+								<footer id="footer">
+									<p class="copyright">&copy; Untitled. All rights reserved. Demo Images: <a href="https://unsplash.com">Unsplash</a>. Design: <a href="https://html5up.net">HTML5 UP</a>.</p>
+								</footer>
+
+						</div>
+					</div>
+
+			</div>
+
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/browser.min.js"></script>
+			<script src="assets/js/breakpoints.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
+
+	</body>
+</html>
