@@ -25,9 +25,11 @@
 									<a href="generic.html" class="logo"><strong>Work</strong> </a>
 									<ul class="icons">
 										
-										<li><a href="https://github.com/Apoorva18" class="icon brands fa-github"><span class="label">Github</span></a></li>
-										<li><a href="https://www.linkedin.com/in/apoorvabiseria/" class="icon brands fa-linkedin"><span class="label">Linkedin</span></a></li>
-										<li><a href="https://www.instagram.com/apoorva_bisaria/" class="icon brands fa-instagram"><span class="label">Instagram</span></a></li>
+										<li><a href="#" class="icon brands fa-facebook-f"><span class="label">Facebook</span></a></li>
+										
+										<li><a href="#" class="icon brands fa-instagram"><span class="label">Instagram</span></a></li>
+                                        <li><a href="#" class="icon brands fa-github"><span class="label">Medium</span></a></li>
+                                        <li><a href="#" class="icon brands fa-linkedin"><span class="label">Medium</span></a></li>
 									</ul>
 								</header>
 
@@ -39,8 +41,23 @@
 
                                 <!-- Content -->
                                     <!--<h2 id="content">Sample Content</h2>-->
-                                    <p>I have worked on various projects on Java and Python being it from working on making a database system, working on android app which works on the principal of amazon dynamo, Performing colour quantisation of images, performing  digit recognition, Performing map reduce on a hadoop framework.</p>
+                                    <p>I have worked on various projects on Java and Python ranging from implementing Machine Learning techniques for digit recognition, using Deep Learning techniques to implement DCGAN and SAGAN,  building a database engine, working on android app which works on the principal of amazon dynamo, Performing colour quantisation of images, Performing map reduce on a hadoop framework.</p>
                                     <div class="row">
+                                    	<div id="10" >
+                                            <h3> SENTIMENT ANALYSIS </h3>
+                                            <p>The project uses deep learning techniques to solve sequence classification problem. A sequence classification problem is when the input is of varying length, since reviews can be of varying length.</p>
+												<p>To solve this problem, preprocessing of data was done, which involved creating a dictionary of words, represention of words (embedding was used). The reviews were truncated or padded to make them of equal length. After preprocessing, the data was sent to a combination of deep learning models, which mainly included models containing RNN, LSTM and CNN.
+												A conclusion was drawn after training the models on the data, that LSTM performed better. Link to <a href = "https://github.com/Apoorva18">github </a>
+												</p>
+												
+                                        </div>
+                                        <div id="11" >
+                                            <h3> DCGAN and SAGAN </h3>
+                                            <p>The project involved implementation of Deep Convolutional Generative Adversarial Network and Self Attention Generative Adversarial Network on CIFAR-10 dataset.</p>
+												<p> The GAN consists of dicriminator and generator. The discriminator is trained so that it can distinguish between real and fake images. The generator is trained so that it starts generating images as close to real images. This causes an instability in training of GAN. To minimise this, some techniques are used such as spectral normalisation. Along with this I used Self Attention as a custom layer inside the GAN, so that it can be trained more detail specific. Link to <a href = "https://github.com/Apoorva18">github </a>
+												</p>
+												
+                                        </div>
                                         <div id="1">
                                             <h3>SELECT PROJECT JOIN UNION AGGREGATE EVALUATOR</h3>
                                             <p>This is basically a database system, it works on taking query from user, any type of query, be it join, group by, order by, LIMIT, or a combination of these.  The query evaluator breaks the query into its subparts dividing the table name, projections required , select operations to be performed and also the various operations which is <strong>JOIN, GROUP BY ,ORDER BY, LIMIT, AGGREGATE OPERATORS LIKE SUM, COUNT </strong> ETC  that is required to be performed on the data. The following project had memory restrictions.i.e data that could be fit into the memory, was performed on by in memory operations otherwise it was handled by on disk operations. It implements the various operations that need to be performed on the data, and gives back the result to the user. The various operations are implemented using JAVA and JSQLParser. Hash Join is used in order to implement JOIN operations, Group By operator can perform both in memory as well as on disk group by operations. Order By is done for in memory operations using Collections.sort() , whereas the same for on disk is done using external sort. Link to my github. </p>
@@ -211,7 +228,7 @@ lineitem.shipmode;
 																		 model that works on majority voting as voting classifier, it takes votes from all the four models
 																		 and chooses the class which has major number of votes in each class from the four models. Also,
 																	 testing is performed on the USPS dataset which is resized to a 28*28 image.</p>
-															<p> The results and the performance that different methods show on the dataset can be seen <a href="proj3.pdf">here.</a> </p>
+															<p> The results and the performace that different methods show on the dataset can be seen <a href="proj3.pdf">here.</a> </p>
 															</div>
 
 													<div id="9" >
